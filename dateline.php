@@ -18,12 +18,12 @@ namespace usni\news;
  */
 class Dateline {
 	// Plugin constants
-	const ID = 'usninews-dateline'; // Plugin ID
+	const ID = 'usni-dateline'; // Plugin ID
 	const NAME = 'Dateline'; // Plugin name
 	const VERSION = '0.1.1'; // Plugin version
 	const WPVER = '2.7'; // Minimum version of WordPress required for this plugin
-	const PREFIX = 'usninews_dateline_'; // Plugin database/method prefix
-	const METAPREFIX = '_usninews_dateline'; // Post meta database prefix
+	const PREFIX = 'usni_dateline_'; // Plugin database/method prefix
+	const METAPREFIX = '_usni_dateline'; // Post meta database prefix
 	
 	// Class properties
 	private $options; // Plugin options and settings
@@ -112,8 +112,10 @@ class Dateline {
 		// Sanitize the caption
 		$caption = sanitize_text_field( $_POST[self::ID] );
 		
-		// Update the caption meta field
-		update_post_meta( $post_id, self::METAPREFIX, $caption );
+		// Update the caption meta field, if a value is set
+		if ( ! empty( $caption ) ) {
+    		update_post_meta( $post_id, self::METAPREFIX, $caption );
+		}
 	} // End save_metabox()
 	
 	// Show the dateline on a post
