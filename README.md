@@ -1,3 +1,3 @@
-Date Line
+Dateline
 =========
-Adds support for a date line at the beginning of a WordPress post's content.
+Adds support for a [dateline](https://en.wikipedia.org/wiki/Dateline) at the beginning of a WordPress post's content.

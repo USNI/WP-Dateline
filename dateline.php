@@ -1,14 +1,14 @@
 <?php
 /**
- * Plugin Name: Date Line
+ * Plugin Name: Dateline
  * Plugin URI: http://news.usni.org
- * Description: Set a date line for a news story
- * Version: 0.1.0
+ * Description: Set a dateline for a news story
+ * Version: 0.1.1
  * Author: Christiaan Conover
- * Author URI: https://christiaanconover.com?ref=date-line-plugin-author-uri
+ * Author URI: https://christiaanconover.com?ref=dateline-plugin-author-uri
  * License: GPLv2
  * @package usninews
- * @subpackage date-line
+ * @subpackage dateline
  **/
 
 namespace usni\news;
@@ -16,14 +16,14 @@ namespace usni\news;
 /**
  * Main plugin class
  */
-class Date_line {
+class Dateline {
 	// Plugin constants
-	const ID = 'usninews-date-line'; // Plugin ID
-	const NAME = 'Date Line'; // Plugin name
-	const VERSION = '0.1.0'; // Plugin version
+	const ID = 'usninews-dateline'; // Plugin ID
+	const NAME = 'Dateline'; // Plugin name
+	const VERSION = '0.1.1'; // Plugin version
 	const WPVER = '2.7'; // Minimum version of WordPress required for this plugin
-	const PREFIX = 'usninews_date_line_'; // Plugin database/method prefix
-	const METAPREFIX = '_usninews_date_line'; // Post meta database prefix
+	const PREFIX = 'usninews_dateline_'; // Plugin database/method prefix
+	const METAPREFIX = '_usninews_dateline'; // Post meta database prefix
 	
 	// Class properties
 	private $options; // Plugin options and settings
@@ -71,7 +71,7 @@ class Date_line {
 		// Retrieve the current caption as a string, if set
 		$dateline = get_post_meta( $post->ID, self::METAPREFIX, true );
 		
-		echo '<p>Please provide a date line for this story using AP style format.</p>';
+		echo '<p>Please provide a dateline for this story using AP style format.</p>';
 		echo '<input type="text" style="width: 100%; max-width: 100%;" id="' . self::ID . '" name="' . self::ID . '" value="' . esc_attr( $dateline ) . '">';
 	} // End metabox_callback()
 	
@@ -116,17 +116,17 @@ class Date_line {
 		update_post_meta( $post_id, self::METAPREFIX, $caption );
 	} // End save_metabox()
 	
-	// Show the date line on a post
+	// Show the dateline on a post
 	public function show_dateline( $content ) {
 		// Get access to post object
 		global $post;
 		
-		// If a date line is set, run the filter
+		// If a dateline is set, run the filter
 		if ( $dateline = get_post_meta( $post->ID, self::METAPREFIX, true ) ) {
-			// Set date line HTML output
+			// Set dateline HTML output
 			$dateline = '<span class="dateline p-location">' . $dateline . '</span> - ';
 			
-			// Add date line to the beginning of the post content
+			// Add dateline to the beginning of the post content
 			$content = preg_filter( '/<p>/', '<p>' . $dateline, $content, 1 );
 		}
 		
@@ -192,5 +192,5 @@ class Date_line {
 } // End main plugin class
 
 // Create plugin object
-$usninews_dateline = new \usni\news\Date_line;
+$usninews_dateline = new \usni\news\Dateline;
 ?>
