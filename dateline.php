@@ -1,17 +1,17 @@
 <?php
 /**
  * Plugin Name: Dateline
- * Plugin URI: http://news.usni.org
+ * Plugin URI: https://github.com/USNI/WP-Dateline
  * Description: Set a dateline for a news story
  * Version: 0.1.1
- * Author: Christiaan Conover
- * Author URI: https://christiaanconover.com?ref=dateline-plugin-author-uri
+ * Author: U.S. Naval Institute
+ * Author URI: http://www.usni.org?ref=dateline-plugin-author-uri
  * License: GPLv2
- * @package usninews
+ * @package usni
  * @subpackage dateline
  **/
 
-namespace usni\news;
+namespace usni;
 
 /**
  * Main plugin class
@@ -194,5 +194,5 @@ class Dateline {
 } // End main plugin class
 
 // Create plugin object
-$usninews_dateline = new \usni\news\Dateline;
+$usninews_dateline = new \usni\Dateline;
 ?>
